@@ -1,7 +1,7 @@
 CSS Scroll Selectors
 =====
 
-Conditionally apply styles depending on scroll position. But without JavaScript*.
+Conditionally apply styles depending on scroll position. **Without JavaScript***.
 
 Take a look at [a demo](http://davebakker.github.io/cssss/demo.html).
 
