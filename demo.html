@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" css-scroll>
+<head>
+	<meta charset="utf-8">
+
+	<title>CSS Scroll Selectors</title>
+
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="./jquery.cssss.js"></script>
+
+	<style type="text/css">
+
+		/*
+		Conditional styles. Depending on scroll position.
+		*/
+
+		html header {
+			font-size: 85px;
+		}
+		html[css-scroll~="top>85"] header {
+			font-size: 30px;
+		}
+
+
+
+		html #midway-notification {
+			opacity: 0;
+		}
+
+		html[css-scroll~="progressY>0.35&&progressY<0.65"] #midway-notification {
+			opacity: 1;
+		}
+
+
+
+		html #end-notification {
+			right: -130px;
+			opacity: 0;
+		}
+
+		html[css-scroll~="bottom<100"] #end-notification {
+			right: 10px;
+			opacity: 1;
+		}
+
+
+
+		/*
+		The following styles are only here to make a presentable demo.
+		Some coloring, some padding, nothing special.
+		*/
+
+		html, body {
+			height: 100%;
+		}
+
+		body {
+			padding-top: 85px;
+		}
+
+		header {
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			height: 1em;
+			background-color: #333;
+			color: #fff;
+		}
+
+		#end-notification {
+			position: fixed;
+			bottom: 10px;
+			background-color: #333;
+			color: white;
+			padding: 1em;
+		}
+
+		#midway-notification {
+			background-color: #333;
+			color: white;
+			text-align: center;
+			padding: 0.4em 0;
+		}
+
+		header h1 {
+			font-size: 0.4em;
+			margin: 0;
+			line-height: 2.4em;
+			padding-left: 1em;
+		}
+
+		.long-content {
+			height: 150%;
+			padding-top: 13%;
+			text-align: center;
+		}
+
+		.transition {
+			-webkit-transition: 0.3s ease-in-out;
+			-moz-transition: 0.3s ease-in-out;
+			-o-transition: 0.3s ease-in-out;
+			transition: 0.3s ease-in-out;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<header class="transition">
+		<h1>CSSSS: CSS Scroll Selectors</h1>
+	</header>
+
+	<p class="long-content">
+		Scroll to the bottom of the page to see the CSS style changes.
+	</p>
+	<p id="midway-notification" class="transition">
+		You're about halfway now.
+	</p>
+	<p class="long-content"></p>
+	<div id="end-notification" class="transition">
+		This is the end.
+	</div>
+
+
+	<script type="text/javascript">
+
+		$(function() {
+			$('[css-scroll]').cssss();
+		});
+
+	</script>
+
+</body>
+</html>
